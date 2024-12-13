@@ -63,6 +63,10 @@ $terms_url   = isset( $branding['terms_url'] ) ? $branding['terms_url'] : 'https
 	font-weight: 600;
 }
 
+.mttr-subscribe-panel-content .notice {
+	display: none !important;
+}
+
 .mttr-plugin-desc {
 	font-size: 15px;
 	color: #64748b;
