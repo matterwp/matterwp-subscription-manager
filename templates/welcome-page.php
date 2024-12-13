@@ -105,18 +105,14 @@ $terms_url   = isset( $branding['terms_url'] ) ? $branding['terms_url'] : 'https
 	gap: 5px;
 	transition: all 0.3s ease;
 	background-color:
-		<?php
-		echo esc_attr( $btn_color );
-		?>
-	;
+		<?php echo esc_attr($btn_color);
+	?>;
 }
 
 .btn-subscribe:hover {
 	background-color:
-		<?php
-		echo esc_attr( $btn_hover );
-		?>
-	;
+		<?php echo esc_attr($btn_hover);
+	?>;
 }
 
 .btn-subscribe svg {
@@ -299,15 +295,9 @@ jQuery(document).ready(function($) {
 					this.setSuccessState();
 				}
 
-				if (this.isSkipped) {
-					setTimeout(() => {
-						window.location.href = '<?php echo esc_js( $after_subscription_url ); ?>';
-					}, 0);
-				} else {
-					setTimeout(() => {
-						window.location.href = '<?php echo esc_js( $after_subscription_url ); ?>';
-					}, 1500);
-				}
+				setTimeout(() => {
+					window.location.href = '<?php echo esc_js( $after_subscription_url ); ?>';
+				}, 1000);
 			} catch (error) {
 				console.error('Error:', error);
 				alert('An error occurred. Please try again.');

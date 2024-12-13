@@ -33,7 +33,8 @@ class SubscriptionManagerFactory {
 		self::validateRequiredSettings( $settings );
 		$settings = self::prepareSettings( $settings );
 
-		return new SubscriptionManager( $settings );
+		$manager = new SubscriptionManager( $settings );
+		return $manager;
 	}
 
 	/**

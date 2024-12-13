@@ -8,12 +8,29 @@ namespace MatterWP\WPSubscriptionManager;
  */
 class Diagnosis {
 	/**
+	 * SubscriptionManager instance
+	 *
+	 * @var SubscriptionManager
+	 */
+	private static $manager;
+
+	/**
+	 * Set the SubscriptionManager instance
+	 *
+	 * @param SubscriptionManager $manager
+	 */
+	public static function set_manager( SubscriptionManager $manager ) {
+		self::$manager = $manager;
+	}
+
+	/**
 	 * Retrieves comprehensive system information about the WordPress installation
 	 *
 	 * @return array Filtered array of system information
 	 */
 	public static function get_system_info() {
 		$data = array(
+			'plugin_slug'        => self::safely_run( 'get_plugin_slug' ),
 			'email'              => self::safely_run( 'get_admin_email' ),
 			'website_url'        => self::safely_run( 'get_site_url' ),
 			'username'           => self::safely_run( 'get_admin_username' ),
@@ -300,5 +317,23 @@ class Diagnosis {
 	public static function get_system_info_ajax() {
 		check_ajax_referer( 'get_diagnosis', 'nonce' );
 		wp_send_json_success( self::get_system_info() );
+	}
+
+	/**
+	 * Gets the plugin slug from the Config instance
+	 *
+	 * @return string Plugin slug or empty string on failure
+	 */
+	private static function get_plugin_slug() {
+		if (!isset(self::$manager)) {
+			return '';
+		}
+
+		try {
+			$config = self::$manager->get_config();
+			return $config ? sanitize_key($config->get('plugin_slug')) : '';
+		} catch (\Exception $e) {
+			return '';
+		}
 	}
 }

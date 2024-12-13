@@ -30,6 +30,9 @@ class SubscriptionManager {
 		$this->config       = new Config( $settings );
 		$this->welcome_page = new WelcomePage( $this->config );
 
+		// Set the manager instance for Diagnosis
+		Diagnosis::set_manager( $this );
+
 		$this->setup_hooks();
 	}
 
@@ -86,5 +89,14 @@ class SubscriptionManager {
 	 */
 	public function get_welcome_url() {
 		return admin_url( 'admin.php?page=' . $this->config->get( 'plugin_slug' ) . '-welcome' );
+	}
+
+	/**
+	 * Get the config instance
+	 *
+	 * @return Config
+	 */
+	public function get_config() {
+		return $this->config;
 	}
 }
