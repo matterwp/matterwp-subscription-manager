@@ -1,0 +1,21 @@
+{
+	"name": "matterwp/wp-subscription-manager",
+	"description": "WordPress Subscription Manager",
+	"type": "wordpress-plugin",
+	"license": "proprietary",
+	"private": true,
+	"authors": [
+		{
+			"name": "Your Name",
+			"email": "your@email.com"
+		}
+	],
+	"require": {
+		"php": ">=7.3.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"MatterWP\\WPSubscriptionManager\\": "src/"
+		}
+	}
+}
