@@ -100,12 +100,19 @@ $terms_url   = isset( $branding['terms_url'] ) ? $branding['terms_url'] : 'https
 	align-items: center;
 	gap: 5px;
 	transition: all 0.3s ease;
+	background-color:
+		<?php
+		echo esc_attr( $btn_color );
+		?>
+	;
 }
 
 .btn-subscribe:hover {
 	background-color:
-		<?php echo esc_attr($btn_hover);
-	?>;
+		<?php
+		echo esc_attr( $btn_hover );
+		?>
+	;
 }
 
 .btn-subscribe svg {
@@ -189,7 +196,7 @@ $terms_url   = isset( $branding['terms_url'] ) ? $branding['terms_url'] : 'https
 					<input type="hidden" name="is_subscribed" value="1">
 					<p class="mttr-subscribe-panel-footer-actions">
 						<button type="button" class="btn-skip">Skip</button>
-						<button type="submit" class="btn-subscribe" style="background-color: <?php echo esc_attr( $btn_color ); ?>">
+						<button type="submit" class="btn-subscribe">
 							<span class="btn-text"><?php echo esc_html( $btn_text ); ?></span>
 							<span class="btn-loading" style="display: none;">
 								<svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="16" height="16">
